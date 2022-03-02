@@ -15,10 +15,10 @@ const displayMobile = mobiles => {
     div.classList.add("col");
     div.innerHTML = `
         <div class="card mt-3" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
+            <img src="${mobile.image}" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h4 class="card-title">Brand:</h4>
-              <h5 class="card-text">Mobile Name:</h5>
+              <h4 class="card-title">Brand: ${mobile.brand}</h4>
+              <h5 class="card-text">Mobile Name: ${mobile.phone_name}</h5>
               <p>
                 <button
                   class="btn btn-primary"
@@ -33,5 +33,6 @@ const displayMobile = mobiles => {
               </p>
             </div>
           </div>`;
+    searchResult.appendChild(div);
   });
 };
