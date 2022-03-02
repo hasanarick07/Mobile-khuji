@@ -14,7 +14,7 @@ const displayMobile = mobiles => {
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
-        <div class="card mt-3" style="width: 18rem">
+        <div class="card mt-3 p-2 h-100" style="width: 18rem">
             <img src="${mobile.image}" class="card-img-top" alt="..." />
             <div class="card-body">
               <h4 class="card-title">Brand: ${mobile.brand}</h4>
