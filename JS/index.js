@@ -10,15 +10,15 @@ const searchMobile = () => {
 const displayMobile = mobiles => {
   const searchResult = document.getElementById("search-result");
   mobiles.forEach(mobile => {
-    console.log(mobile);
+    // console.log(mobile);
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
-        <div class="card mt-3 p-2 h-100" style="width: 18rem">
-            <img src="${mobile.image}" class="card-img-top" alt="..." />
+        <div class="card mt-3 mx-auto p-3 h-100 rounded">
+            <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="..." />
             <div class="card-body">
               <h4 class="card-title">Brand: ${mobile.brand}</h4>
-              <h5 class="card-text">Mobile Name: ${mobile.phone_name}</h5>
+              <h6 class="card-text">Name: ${mobile.phone_name}</h6>
               <p>
                 <button onclick="showDetails('${mobile.slug}')"
                   class="btn btn-primary">
@@ -37,20 +37,22 @@ const showDetails = id => {
     .then(data => displayMobileDetails(data.data));
 };
 const displayMobileDetails = mobile => {
-  console.log(mobile);
+  console.log(mobile.mainFeatures);
   const mobileDetails = document.getElementById("display-mobile-details");
   const div = document.createElement("div");
-  div.classList.add("card");
   div.innerHTML = `
-  <div class="card-body mx-auto">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>`;
+  <div class="card mx-auto p-2 h-100 w-75 ">
+        <div class="card-body">
+            <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="..." />
+            <h6 class="card-text">Name: ${mobile.name}</h6>
+            <h6 class="card-text">ReleaseDate: ${mobile.releaseDate}</h6>
+            <h6 class="card-text">ChipSet: ${mobile.mainFeatures.chipSet}</h6>
+            <h6 class="card-text">DisplaySize: ${mobile.mainFeatures.displaySize}</h6>
+            <h6 class="card-text">Memory: ${mobile.mainFeatures.memory}</h6>
+            <h6 class="card-text">Storage: ${mobile.mainFeatures.storage}</h6>
+            
+        </div>
+  </div>
+  `;
   mobileDetails.appendChild(div);
 };
