@@ -25,7 +25,7 @@ const displayMobile = mobiles => {
     searchResult.textContent = "";
     mobileDetails.textContent = "";
   } else {
-    mobiles.forEach(mobile => {
+    mobiles.slice(0, 20).forEach(mobile => {
       // console.log(mobile);
       const div = document.createElement("div");
       div.classList.add("col");
