@@ -20,15 +20,8 @@ const displayMobile = mobiles => {
               <h4 class="card-title">Brand: ${mobile.brand}</h4>
               <h5 class="card-text">Mobile Name: ${mobile.phone_name}</h5>
               <p>
-                <button
-                    onclick="showDetails('${mobile.slug}')"
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseWidthExample"
-                  aria-expanded="false"
-                  aria-controls="collapseWidthExample"
-                >
+                <button onclick="showDetails('${mobile.slug}')"
+                  class="btn btn-primary">
                   Details...
                 </button>
               </p>
@@ -41,5 +34,23 @@ const showDetails = id => {
   const url = `https://openapi.programming-hero.com/api/phone/${id}`;
   fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data.data));
+    .then(data => displayMobileDetails(data.data));
+};
+const displayMobileDetails = mobile => {
+  console.log(mobile);
+  const mobileDetails = document.getElementById("display-mobile-details");
+  const div = document.createElement("div");
+  div.classList.add("card");
+  div.innerHTML = `
+  <div class="card-body mx-auto">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">
+        Some quick example text to build on the card title and make up the
+        bulk of the card's content.
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>`;
+  mobileDetails.appendChild(div);
 };
