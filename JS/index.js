@@ -21,6 +21,7 @@ const displayMobile = mobiles => {
               <h5 class="card-text">Mobile Name: ${mobile.phone_name}</h5>
               <p>
                 <button
+                    onclick="showDetails('${mobile.slug}')"
                   class="btn btn-primary"
                   type="button"
                   data-bs-toggle="collapse"
@@ -35,4 +36,10 @@ const displayMobile = mobiles => {
           </div>`;
     searchResult.appendChild(div);
   });
+};
+const showDetails = id => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data.data));
 };
